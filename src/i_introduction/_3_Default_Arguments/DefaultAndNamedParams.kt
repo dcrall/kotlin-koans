@@ -15,11 +15,15 @@ fun todoTask3(): Nothing = TODO(
     references = { name: String -> JavaCode3().foo(name); foo(name) })
 
 fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false): String {
-    return (if(toUpperCase) name.toUpperCase() else name) + number
+    //return (if(toUpperCase) name.toUpperCase() else name) + number
+
+    return when(toUpperCase) {
+        false -> name + number
+        true  -> name.toUpperCase() + number
+    }
 }
 
 fun task3(): String {
-    //todoTask3()
     return (foo("a") +
             foo("b", number = 1) +
             foo("c", toUpperCase = true) +
